@@ -1,6 +1,7 @@
 package com.example.rokk3r26.sunshine;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class ForecastFragment extends Fragment {
   private ArrayList<String> weekForecast = new ArrayList<String>();
   ArrayAdapter<String> adapter;
   private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
+  private final String KEY_DATA = "keyData";
 
   public ForecastFragment() {
   }
@@ -69,7 +71,9 @@ public class ForecastFragment extends Fragment {
       listForeCast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+          Intent intent = new Intent(getActivity(), DetailActivity.class);
+          intent.putExtra(KEY_DATA, parent.getAdapter().getItemId(position));
+          startActivity(intent);
         }
       });
       return rootView;

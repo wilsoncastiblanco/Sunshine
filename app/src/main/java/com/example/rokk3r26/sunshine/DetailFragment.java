@@ -11,7 +11,10 @@ import android.view.ViewGroup;
  */
 public class DetailFragment extends Fragment{
 
-  public DetailFragment() {
+  public static DetailFragment newInstance(Bundle bundle) {
+    DetailFragment fragment = new DetailFragment();
+    fragment.setArguments(bundle);
+    return fragment;
   }
 
   @Override

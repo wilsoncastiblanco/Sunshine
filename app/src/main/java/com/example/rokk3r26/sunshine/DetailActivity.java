@@ -1,30 +1,25 @@
 package com.example.rokk3r26.sunshine;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-
 
 public class DetailActivity extends Activity {
+  private final String KEY_DATA = "keyData";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_detail);
+    String data = getIntent().getStringExtra(KEY_DATA);
     if (savedInstanceState == null) {
+      Bundle bundle = new Bundle();
+      bundle.putString(KEY_DATA, data);
       getFragmentManager().beginTransaction()
-          .add(R.id.container, new DetailFragment())
-          .commit();
+          .add(R.id.container, DetailFragment.newInstance(bundle)).commit();
     }
   }
-
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
