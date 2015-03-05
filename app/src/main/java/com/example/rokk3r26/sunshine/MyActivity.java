@@ -1,6 +1,7 @@
 package com.example.rokk3r26.sunshine;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,7 +34,8 @@ public class MyActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+          startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+          return true;
         }
         return super.onOptionsItemSelected(item);
     }

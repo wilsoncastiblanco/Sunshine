@@ -1,6 +1,7 @@
 package com.example.rokk3r26.sunshine;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class DetailActivity extends Activity {
 
     //noinspection SimplifiableIfStatement
     if (id == R.id.action_settings) {
+      startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
       return true;
     }
 
