@@ -81,7 +81,7 @@ public class ForecastFragment extends Fragment {
 
   @Override
   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-      inflater.inflate(R.menu.forecastfragment, menu);
+    inflater.inflate(R.menu.forecastfragment, menu);
   }
 
   @Override
@@ -126,7 +126,7 @@ public class ForecastFragment extends Fragment {
       BufferedReader reader = null;
 
       String format = "json";
-      String units = "metric";
+      String units = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_temperature_key), getString(R.string.pref_temperature_default));
       int numDays = 7;
 
       final String FORECAST_BASE_URL = "api.openweathermap.org";

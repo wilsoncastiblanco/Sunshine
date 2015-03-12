@@ -10,10 +10,12 @@
         android:inputType="text"
         android:singleLine="true" />
 
-    <CheckBoxPreference
-        android:key="pref_sync"
+    <ListPreference
+        android:key="@string/pref_temperature_key"
         android:title="@string/pref_temperature_label"
-        android:summary="@string/pref_temperature_key"
-        android:defaultValue="true" />
+        android:summary="@string/pref_temperature_summary"
+        android:entries="@array/metrics"
+        android:entryValues="@array/metricsValues"
+        android:defaultValue="@string/pref_temperature_default"/>
 
 </PreferenceScreen>
