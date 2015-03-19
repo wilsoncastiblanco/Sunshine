@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 /**
@@ -22,6 +22,7 @@ public class DetailFragment extends Fragment{
   private String LOG_TAG = DetailFragment.class.getSimpleName();
   private String FORECAST_SHARE_HASHTAG = "#SunshineApp";
   private final String KEY_DATA = "keyData";
+  private ShareActionProvider mShareActionProvider;
 
   private String mForecastString;
 
@@ -56,15 +57,11 @@ public class DetailFragment extends Fragment{
     MenuItem menuItem = menu.findItem(R.id.action_share);
 
     // Get the provider and hold onto it to set/change the share intent.
-    ShareActionProvider mShareActionProvider =
-        (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+    mShareActionProvider = (android.support.v7.widget.ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
 
-    // Attach an intent to this ShareActionProvider.  You can update this at any time,
-    // like when the user selects a new piece of data they might like to share.
-    if (mShareActionProvider != null ) {
+    // If onLoadFinished happens before this, we can go ahead and set the share intent now.
+    if (mForecastString != null) {
       mShareActionProvider.setShareIntent(createShareForecastIntent());
-    } else {
-      Log.d(LOG_TAG, "Share Action Provider is null?");
     }
   }
 
